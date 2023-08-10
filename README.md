@@ -12,28 +12,49 @@ Sample React Native application using [LaunchDarkly React Native SDK](https://do
 ## Building instructions 
 1. Create React Native project 
 ```
-npx react-native init sampleReactNative --version 0.71.12
+> npx react-native init sampleReactNative --version 0.71.12
 ```
+This will create the `./sampleReactNative` folder.
 
 2. Install LaunchDarkly React native SDK
 
 ```
-npm install launchdarkly-react-native-client-sdk@7.1.6
+> cd sampleReactNative
+> npm install launchdarkly-react-native-client-sdk@7.1.6
 ```
 
-> For iOS, set up the native module dependencies by running `npx pod-install`.
+> For iOS, set up the native module dependencies by running `npx pod-install` in the `./sampleReactNative/ios` directory
 
 
 
-3. Download the files in this repo and copy them into your project folder.
+3. Download the files in this repo and copy them in the `./sampleReactNative`  project folder.
 
 ```
 * index.js
 * ./components
 * ./img
+```
+the final folder structure would look like this
+```
+.
+├── App.tsx
+├── Gemfile
+├── __tests__
+├── _node-version
+├── android
+├── app.json
+├── babel.config.js
+├── components
+├── img
+├── index.js
+├── ios
+├── metro.config.js
+├── node_modules
+├── package.json
+├── tsconfig.json
+└── yarn.lock
 
 ```
-
 
 4. Login to your LaunchDarkly accounts and create the following feature flags.
 

@@ -7,7 +7,9 @@ import App from "./components/App";
 
 import { name as appName } from "./app.json";
 import { AppLDProvider } from "./components/ldsupport";
-import config from "./config.json";
+const config = {
+  mobileKey: "<Mobile SDK Key>",
+};
 
 AppRegistry.registerComponent(appName, () => App);
 AppRegistry.setWrapperComponentProvider(function () {
