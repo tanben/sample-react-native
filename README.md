@@ -1,131 +1,105 @@
-# Sample LaunchDarkly React Native application
-Sample React Native application using [LaunchDarkly React Native SDK](https://docs.launchdarkly.com/sdk/client-side/react/react-native)
+# LaunchDarkly React Native Sample App
 
-## Requirements
-* React Native versions >=0.69 <0.72, the minimum iOS deployment target is 11.0, and the minimum Android SDK version is 21. Builds are tested with XCode 12.5+.
-* Node >= 18.x
-* LaunchDarkly React Native SDK >= 7.1.6
-* [LaunchDarkly Account](https://launchdarkly.com/start-trial/)
-* [LaunchDarkly Mobile SDK Key ](https://docs.launchdarkly.com/sdk/concepts/client-side-server-side#keys?q=react%20nati)
-
-
-## Building instructions 
-1. Create React Native project 
-```
-> npx react-native init sampleReactNative --version 0.71.12
-```
-This will create the `./sampleReactNative` folder.
-
-2. Install LaunchDarkly React native SDK
-
-```
-> cd sampleReactNative
-> npm install launchdarkly-react-native-client-sdk@7.1.6
-```
-
-> For iOS, set up the native module dependencies by running `npx pod-install` in the `./sampleReactNative/ios` directory
-
-
-
-3. Download the files in this repo and copy them in the `./sampleReactNative`  project folder.
-
-```
-* index.js
-* ./components
-* ./img
-```
-the final folder structure would look like this
-```
-.
-├── App.tsx
-├── Gemfile
-├── __tests__
-├── _node-version
-├── android
-├── app.json
-├── babel.config.js
-├── components
-├── img
-├── index.js
-├── ios
-├── metro.config.js
-├── node_modules
-├── package.json
-├── tsconfig.json
-└── yarn.lock
-
-```
-
-4. Login to your LaunchDarkly accounts and create the following feature flags.
-
-```
-Flags:["show-like-button", "show-ui-debug"]
-Type: Boolean
-```
-
-```
-Flags:["get-launcher-details"]
-Type: JSON
-
-Name: Light Launcher
-Value1:
-{
-  "backgroundImage": "ThumbsUpLight.png",
-  "heroImage": "ThumbsUpLight.png",
-  "heroName": "Light Launcher"
-}
-
-Name: Dark Launcher
-{
-  "backgroundImage": "ThumbsUpDark.png",
-  "heroImage": "ThumbsUpDark.png",
-  "heroName": "Dark Launcher"
-}
-
-Name: Toggle
-{
-  "backgroundImage": "Toggle.png",
-  "heroImage": "Toggle.png",
-  "heroName": "Toggle"
-}
-
-Name: Toggle Thumbsup
-{
-  "backgroundImage": "ToggleThumbsUp.png",
-  "heroImage": "ToggleThumbsUp.png",
-  "heroName": "Toggle Thumbsup"
-}
-```
-
-
-
-5. Copy the mobile key from your account settings page from your LaunchDarkly dashboard into `index.js`.
-
-```
-const config={
-    mobileKey: "<Mobile SDK Key>"
-}
-```
-
-# Running the app
-
-  
-###  Run instructions for Android:
-    • Have an Android emulator running (quickest way to get started), or a device connected.
-    • cd sampleReactNative && npx react-native run-android
-      - or -
-    • cd sampleReactNative && npm run android
-  
-### Run instructions for iOS:
-    • cd sampleReactNative && npx react-native run-ios
-      - or -
-    • cd sampleReactNative && npm run ios
-      - or -
-    • Open sampleReactNative/ios/sampleReactNative.xcworkspace in Xcode or run "xed -b ios"
-    • Hit the Run button
-    
-### Run instructions for macOS:
-    • See https://aka.ms/ReactNativeGuideMacOS for the latest up-to-date instructions.
+This is a sample React Native application that demonstrates how to use the [LaunchDarkly React Native SDK](https://docs.launchdarkly.com/sdk/client-side/react/react-native) to manage feature flags in your mobile app.
 
 ![](./img/rn-demo.gif)
+Explore the code and experiment with different feature flag configurations to see how they affect the app's behavior.
+
+## Prerequisites
+
+- React Native version: 0.71.12
+- iOS deployment target: 11.0 or higher
+- Android SDK version: 21 or higher
+- Node.js version: 18.x or higher
+- LaunchDarkly React Native SDK version: 7.1.6 or higher
+- A [LaunchDarkly Account](https://launchdarkly.com/start-trial/)
+- A [LaunchDarkly Mobile SDK Key](https://docs.launchdarkly.com/sdk/concepts/client-side-server-side#keys?q=react%20nati)
+
+## Installation
+To ensure you have the latest React Native libraries, create a new project using the React Native CLI by following these steps:
+
+
+1. Create a new React Native project:
+   ```
+   npx react-native init sampleReactNative --version 0.71.12
+   ```
+
+2. Install the LaunchDarkly React Native SDK:
+   ```
+   cd sampleReactNative
+   npm install launchdarkly-react-native-client-sdk@7.1.6
+   ```
+
+   For iOS, set up the native module dependencies:
+   ```
+   cd ios
+   npx pod-install
+   ```
+
+3. Copy the necessary files from this repository into your project:
+   - `index.js`
+   - `./components`
+   - `./img`
+
+4. Create the following feature flags in your LaunchDarkly account:
+   - Flags: `show-like-button`, `show-ui-debug`
+     - Type: Boolean
+
+   - Flag: `get-launcher-details` 
+     - Type: JSON
+     - Variations:
+       - Light Launcher
+         ```
+            {
+              "backgroundImage": "ThumbsUpLight.png",
+              "heroImage": "ThumbsUpLight.png",
+              "heroName": "Light Launcher"
+            }
+          ```
+       - Dark Launcher
+          ```
+            {
+              "backgroundImage": "ThumbsUpDark.png",
+              "heroImage": "ThumbsUpDark.png",
+              "heroName": "Dark Launcher"
+            }
+          ```
+       - Toggle
+          ```
+            {
+              "backgroundImage": "Toggle.png",
+              "heroImage": "Toggle.png",
+              "heroName": "Toggle"
+            }
+          ``` 
+       - Toggle Thumbsup
+          ``` 
+            {
+              "backgroundImage": "ToggleThumbsUp.png",
+              "heroImage": "ToggleThumbsUp.png",
+              "heroName": "Toggle Thumbsup"
+            }
+          ``` 
+
+5. Copy your LaunchDarkly mobile SDK key from your account settings and add it to `index.js`:
+   ```javascript
+   const config = {
+     mobileKey: "<Mobile SDK Key>"
+   };
+   ```
+
+## Running the App
+
+### Android
+- Have an Android emulator running or a device connected
+- Run `cd sampleReactNative && npx react-native run-android` or `cd sampleReactNative && npm run android`
+
+### iOS
+- Run `cd sampleReactNative && npx react-native run-ios` or `cd sampleReactNative && npm run ios`
+- Alternatively, open `sampleReactNative/ios/sampleReactNative.xcworkspace` in Xcode and hit the Run button
+
+### macOS
+- See the [official guide](https://aka.ms/ReactNativeGuideMacOS) for the latest instructions
+
+
 
